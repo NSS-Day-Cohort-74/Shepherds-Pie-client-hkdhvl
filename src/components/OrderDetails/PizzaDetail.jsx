@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
-import { getPizzaById } from "../../services/orderService";
+import { getPizzaById, getToppingByPizzaId } from "../../services/orderService";
+import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
 
 export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
     const [pizzaData, setPizzaData] = useState({});
+    const [toppingData, setToppingData] = useState([]);
 
     useEffect(() => {
         getPizzaById(pizzaId).then((pizzaData) => setPizzaData(pizzaData));
     }, []);
+
+    useEffect(() => {
+        getToppingByPizzaId(pizzaData.id).then((pizzaToppingObject) =>
+            setToppingData(pizzaToppingObject)
+        );
+    }, [pizzaData]);
 
     useEffect(() => {
         setPizzaCost(
@@ -28,6 +36,12 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
                 {pizzaData.cheese?.name}
                 {"  "}
                 {pizzaData.sauce?.name}
+                <div>
+                    Pizza Toppings:
+                    {toppingData.map(
+                        (toppingObject) => " " + toppingObject.topping?.name
+                    )}
+                </div>
             </div>
             <div>
                 Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost:{" "}
