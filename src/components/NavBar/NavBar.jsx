@@ -12,7 +12,7 @@ export const NavBar = () => {
                 <Link className="navbar-link">New Order</Link>
             </li>
             <li>
-                <Link className="navbar-link">Order List</Link>
+                <Link className="navbar-link" to="/OrderList">Order List</Link>
             </li>
             <li>
                 <Link className="navbar-link">Employee List</Link>
