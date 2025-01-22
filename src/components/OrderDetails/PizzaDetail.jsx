@@ -10,9 +10,12 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
 
     useEffect(() => {
         setPizzaCost(
-            parseInt(
-                pizzaData.size?.cost + pizzaData.pizzaToppings?.length * 0.5
-            )
+            pizzaData.size
+                ? parseInt(
+                      pizzaData.size?.cost +
+                          pizzaData.pizzaToppings?.length * 0.5
+                  )
+                : 0
         );
     }, [pizzaData]);
 

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
-import { getOrderById, getPizzaById } from "../../services/orderService";
+import { getOrderById } from "../../services/orderService";
 import { PizzaDetail } from "./PizzaDetail";
 
 export const OrderDetails = () => {
@@ -16,9 +16,9 @@ export const OrderDetails = () => {
     }, []);
 
     useEffect(() => {
-        let totalCostCopy = parseInt(totalCost);
-        totalCostCopy += parseInt(pizzaCost);
-        setTotalCost(parseInt(totalCostCopy));
+        let copyCost = totalCost ? totalCost : 0;
+        copyCost += pizzaCost;
+        setTotalCost(copyCost);
     }, [pizzaCost]);
 
     return (
