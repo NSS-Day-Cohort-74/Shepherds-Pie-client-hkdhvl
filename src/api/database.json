@@ -26,7 +26,9 @@
     ],
     "pizzas": [
       {"id": 1, "sizeId": 2, "cheeseId": 1, "sauceId": 2, "orderId": 1},
-      {"id": 2, "sizeId": 1, "cheeseId": 2, "sauceId": 1, "orderId": 2}
+      {"id": 2, "sizeId": 1, "cheeseId": 3, "sauceId": 2, "orderId": 1},
+      {"id": 3, "sizeId": 2, "cheeseId": 1, "sauceId": 2, "orderId": 2},
+      {"id": 4, "sizeId": 1, "cheeseId": 2, "sauceId": 1, "orderId": 2}
     ],
     "sizes": [
       {"id": 1, "name": "Small (10inch)", "cost": 10},
@@ -36,15 +38,14 @@
     "cheeses": [
       {"id": 1, "name": "Buffalo Mozzarella"},
       {"id": 2, "name": "Four Cheese"},
-      {"id": 2, "name": "Vegan"},
-      {"id": 2, "name": "None (cheeseless)"}
-      
+      {"id": 3, "name": "Vegan"},
+      {"id": 4, "name": "None (cheeseless)"}
     ],
     "sauces": [
       {"id": 1, "name": "Marinara"},
       {"id": 2, "name": "Garlic White"},
       {"id": 3, "name": "Arrabbiata"},
-      {"id": 3, "name": "None (sauceless pizza)"}
+      {"id": 4, "name": "None (sauceless pizza)"}
     ],
     "toppings": [
       {"id": 1, "name": "Sausage", "cost": 0.50},
