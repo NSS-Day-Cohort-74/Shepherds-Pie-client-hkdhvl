@@ -1,0 +1,42 @@
+import { Link } from "react-router-dom"
+import "./NavBar.css"
+
+export const NavBar = () => {
+
+    return (
+        <ul>
+            <li>
+                <Link className="navbar-link">Home</Link>
+            </li>
+            <li>
+                <Link className="navbar-link">New Order</Link>
+            </li>
+            <li>
+                <Link className="navbar-link">Order List</Link>
+            </li>
+            <li>
+                <Link className="navbar-link">Employee List</Link>
+            </li>
+            <li>
+                <Link className="navbar-link">Sales Report</Link>
+            </li>
+         
+            {localStorage.getItem("employee_user") ? (
+  <li>
+    <Link
+    className="navbar-link"
+      to=""
+      onClick={() => {
+        localStorage.removeItem("employee_user")
+        navigate("/login", { replace: true })
+      }}
+    >
+      Logout
+    </Link>
+  </li>
+) : (
+  ""
+)}
+        </ul>
+    )
+}
