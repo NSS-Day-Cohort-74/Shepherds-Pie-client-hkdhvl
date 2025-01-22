@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom"
-import "./NavBar.css"
+import { Link } from "react-router-dom";
+import "./NavBar.css";
 
 export const NavBar = () => {
-
     return (
         <ul>
             <li>
@@ -20,23 +19,23 @@ export const NavBar = () => {
             <li>
                 <Link className="navbar-link">Sales Report</Link>
             </li>
-         
+
             {localStorage.getItem("employee_user") ? (
-  <li>
-    <Link
-    className="navbar-link"
-      to=""
-      onClick={() => {
-        localStorage.removeItem("employee_user")
-        navigate("/login", { replace: true })
-      }}
-    >
-      Logout
-    </Link>
-  </li>
-) : (
-  ""
-)}
+                <li>
+                    <Link
+                        className="navbar-link"
+                        to=""
+                        onClick={() => {
+                            localStorage.removeItem("employee_user");
+                            navigate("/login", { replace: true });
+                        }}
+                    >
+                        Logout
+                    </Link>
+                </li>
+            ) : (
+                ""
+            )}
         </ul>
-    )
-}
+    );
+};
