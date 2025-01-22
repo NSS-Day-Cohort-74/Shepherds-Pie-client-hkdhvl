@@ -9,3 +9,9 @@ export const getPizzaById = async (pizzaId) => {
     const data = await response.json()
     return data
 }
+
+export const getOrders = () => {
+    return fetch(`http://localhost:8088/orders`).then((res) => 
+    res.json()
+)
+}
