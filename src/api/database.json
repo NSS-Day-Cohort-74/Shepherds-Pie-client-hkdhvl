@@ -1,277 +1,69 @@
 {
-  "employees": [
-    {
-      "id": 1,
-      "name": "Alice Johnson",
-      "email": "alice.j@example.com",
-      "address": "123 Elm St",
-      "phone": "555-1234",
-      "isAvailable": true,
-      "roleId": 1
-    },
-    {
-      "id": 2,
-      "name": "Bob Smith",
-      "email": "bob.s@example.com",
-      "address": "456 Oak St",
-      "phone": "555-5678",
-      "isAvailable": false,
-      "roleId": 2
-    },
-    {
-      "id": 3,
-      "name": "Charlie Brown",
-      "email": "charlie.b@example.com",
-      "address": "789 Pine St",
-      "phone": "555-8765",
-      "isAvailable": true,
-      "roleId": 3
-    },
-    {
-      "id": 4,
-      "name": "Diana Ross",
-      "email": "diana.r@example.com",
-      "address": "321 Maple St",
-      "phone": "555-4321",
-      "isAvailable": true,
-      "roleId": 1
-    },
-    {
-      "id": 5,
-      "name": "Evan Davis",
-      "email": "evan.d@example.com",
-      "address": "654 Birch St",
-      "phone": "555-1357",
-      "isAvailable": false,
-      "roleId": 2
-    },
-    {
-      "id": 6,
-      "name": "Fiona Green",
-      "email": "fiona.g@example.com",
-      "address": "987 Cedar St",
-      "phone": "555-2468",
-      "isAvailable": true,
-      "roleId": 3
-    },
-    {
-      "id": 7,
-      "name": "George Hill",
-      "email": "george.h@example.com",
-      "address": "123 Spruce St",
-      "phone": "555-9753",
-      "isAvailable": true,
-      "roleId": 1
-    },
-    {
-      "id": 8,
-      "name": "Hannah White",
-      "email": "hannah.w@example.com",
-      "address": "456 Fir St",
-      "phone": "555-8642",
-      "isAvailable": false,
-      "roleId": 2
-    },
-    {
-      "id": 9,
-      "name": "Ian Black",
-      "email": "ian.b@example.com",
-      "address": "789 Willow St",
-      "phone": "555-7531",
-      "isAvailable": true,
-      "roleId": 3
-    },
-    {
-      "id": 10,
-      "name": "Jane Blue",
-      "email": "jane.b@example.com",
-      "address": "321 Poplar St",
-      "phone": "555-6428",
-      "isAvailable": true,
-      "roleId": 1
-    }
-  ],
-  "roles": [
-    {
-      "id": 1,
-      "name": "Customer Service Representative"
-    },
-    {
-      "id": 2,
-      "name": "Chef"
-    },
-    {
-      "id": 3,
-      "name": "Delivery"
-    }
-  ],
-  "customers": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john.d@example.com",
-      "address": "123 Elm St",
-      "phone": "555-9876"
-    },
-    {
-      "id": 2,
-      "name": "Mary Jane",
-      "email": "mary.j@example.com",
-      "address": "456 Oak St",
-      "phone": "555-6789"
-    }
-  ],
-  "orders": [
-    {
-      "id": 1,
-      "dateTime": "2025-01-21 18:30:00",
-      "status": "Delivered",
-      "customerId": 1,
-      "tip": 5,
-      "isDelivery": true
-    },
-    {
-      "id": 2,
-      "dateTime": "2025-01-21 19:00:00",
-      "status": "Pending",
-      "customerId": 2,
-      "tip": 3,
-      "isDelivery": false
-    }
-  ],
-  "pizzas": [
-    {
-      "id": 1,
-      "sizeId": 2,
-      "cheeseId": 1,
-      "sauceId": 2,
-      "orderId": 1
-    },
-    {
-      "id": 2,
-      "sizeId": 1,
-      "cheeseId": 2,
-      "sauceId": 1,
-      "orderId": 2
-    }
-  ],
-  "sizes": [
-    {
-      "id": 1,
-      "name": "Small (10inch)",
-      "cost": 10
-    },
-    {
-      "id": 2,
-      "name": "Medium (14inch)",
-      "cost": 12
-    },
-    {
-      "id": 3,
-      "name": "Large (18inch)",
-      "cost": 15
-    }
-  ],
-  "cheeses": [
-    {
-      "id": 1,
-      "name": "Buffalo Mozzarella"
-    },
-    {
-      "id": 2,
-      "name": "Four Cheese"
-    },
-    {
-      "id": 2,
-      "name": "Vegan"
-    },
-    {
-      "id": 2,
-      "name": "None (cheeseless)"
-    }
-  ],
-  "sauces": [
-    {
-      "id": 1,
-      "name": "Marinara"
-    },
-    {
-      "id": 2,
-      "name": "Garlic White"
-    },
-    {
-      "id": 3,
-      "name": "Arrabbiata"
-    },
-    {
-      "id": 3,
-      "name": "None (sauceless pizza)"
-    }
-  ],
-  "toppings": [
-    {
-      "id": 1,
-      "name": "Sausage",
-      "cost": 0.5
-    },
-    {
-      "id": 2,
-      "name": "Pepperoni",
-      "cost": 0.5
-    },
-    {
-      "id": 3,
-      "name": "Mushroom",
-      "cost": 0.5
-    },
-    {
-      "id": 4,
-      "name": "Onion",
-      "cost": 0.5
-    },
-    {
-      "id": 5,
-      "name": "Green Pepper",
-      "cost": 0.5
-    },
-    {
-      "id": 6,
-      "name": "Black Olive",
-      "cost": 0.5
-    },
-    {
-      "id": 7,
-      "name": "Basil",
-      "cost": 0.5
-    },
-    {
-      "id": 8,
-      "name": "Extra Cheese",
-      "cost": 0.5
-    }
-  ],
-  "pizzaToppings": [
-    {
-      "id": 1,
-      "toppingId": 1,
-      "pizzaId": 1
-    },
-    {
-      "id": 2,
-      "toppingId": 2,
-      "pizzaId": 2
-    }
-  ],
-  "orderEmployees": [
-    {
-      "id": 1,
-      "orderId": 1,
-      "employeeId": 3
-    },
-    {
-      "id": 2,
-      "orderId": 2,
-      "employeeId": 4
-    }
-  ]
-}
+    "employees": [
+      {"id": 1, "name": "Alice Johnson", "email": "alice.j@example.com", "address": "123 Elm St", "phone": "555-1234", "isAvailable": true, "roleId": 1},
+      {"id": 2, "name": "Bob Smith", "email": "bob.s@example.com", "address": "456 Oak St", "phone": "555-5678", "isAvailable": false, "roleId": 2},
+      {"id": 3, "name": "Charlie Brown", "email": "charlie.b@example.com", "address": "789 Pine St", "phone": "555-8765", "isAvailable": true, "roleId": 3},
+      {"id": 4, "name": "Diana Ross", "email": "diana.r@example.com", "address": "321 Maple St", "phone": "555-4321", "isAvailable": true, "roleId": 1},
+      {"id": 5, "name": "Evan Davis", "email": "evan.d@example.com", "address": "654 Birch St", "phone": "555-1357", "isAvailable": false, "roleId": 2},
+      {"id": 6, "name": "Fiona Green", "email": "fiona.g@example.com", "address": "987 Cedar St", "phone": "555-2468", "isAvailable": true, "roleId": 3},
+      {"id": 7, "name": "George Hill", "email": "george.h@example.com", "address": "123 Spruce St", "phone": "555-9753", "isAvailable": true, "roleId": 1},
+      {"id": 8, "name": "Hannah White", "email": "hannah.w@example.com", "address": "456 Fir St", "phone": "555-8642", "isAvailable": false, "roleId": 2},
+      {"id": 9, "name": "Ian Black", "email": "ian.b@example.com", "address": "789 Willow St", "phone": "555-7531", "isAvailable": true, "roleId": 3},
+      {"id": 10, "name": "Jane Blue", "email": "jane.b@example.com", "address": "321 Poplar St", "phone": "555-6428", "isAvailable": true, "roleId": 1}
+    ],
+    "roles": [
+      {"id": 1, "name": "Customer Service Representative"},
+      {"id": 2, "name": "Chef"},
+      {"id": 3, "name": "Delivery"}
+    ],
+    "customers": [
+      {"id": 1, "name": "John Doe", "email": "john.d@example.com", "address": "123 Elm St", "phone": "555-9876"},
+      {"id": 2, "name": "Mary Jane", "email": "mary.j@example.com", "address": "456 Oak St", "phone": "555-6789"}
+    ],
+    "orders": [
+      {"id": 1, "dateTime": "2025-01-21 18:30:00", "status": "Delivered", "customerId": 1, "tip": 5.0, "isDelivery": true},
+      {"id": 2, "dateTime": "2025-01-21 19:00:00", "status": "Pending", "customerId": 2, "tip": 3.0, "isDelivery": false}
+    ],
+    "pizzas": [
+      {"id": 1, "sizeId": 2, "cheeseId": 1, "sauceId": 2, "orderId": 1},
+      {"id": 2, "sizeId": 1, "cheeseId": 3, "sauceId": 2, "orderId": 1},
+      {"id": 3, "sizeId": 2, "cheeseId": 1, "sauceId": 2, "orderId": 2},
+      {"id": 4, "sizeId": 1, "cheeseId": 2, "sauceId": 1, "orderId": 2}
+    ],
+    "sizes": [
+      {"id": 1, "name": "Small (10inch)", "cost": 10},
+      {"id": 2, "name": "Medium (14inch)", "cost": 12},
+      {"id": 3, "name": "Large (18inch)", "cost": 15}
+    ],
+    "cheeses": [
+      {"id": 1, "name": "Buffalo Mozzarella"},
+      {"id": 2, "name": "Four Cheese"},
+      {"id": 3, "name": "Vegan"},
+      {"id": 4, "name": "None (cheeseless)"}
+    ],
+    "sauces": [
+      {"id": 1, "name": "Marinara"},
+      {"id": 2, "name": "Garlic White"},
+      {"id": 3, "name": "Arrabbiata"},
+      {"id": 4, "name": "None (sauceless pizza)"}
+    ],
+    "toppings": [
+      {"id": 1, "name": "Sausage", "cost": 0.50},
+      {"id": 2, "name": "Pepperoni", "cost": 0.50},
+      {"id": 3, "name": "Mushroom", "cost": 0.50},
+      {"id": 4, "name": "Onion", "cost": 0.50},
+      {"id": 5, "name": "Green Pepper", "cost": 0.50},
+      {"id": 6, "name": "Black Olive", "cost": 0.50},
+      {"id": 7, "name": "Basil", "cost": 0.50},
+      {"id": 8, "name": "Extra Cheese", "cost": 0.50}
+    ],
+    "pizzaToppings": [
+      {"id": 1, "toppingId": 1, "pizzaId": 1},
+      {"id": 3, "toppingId": 3, "pizzaId": 1},
+      {"id": 2, "toppingId": 2, "pizzaId": 2}
+    ],
+    "orderEmployees": [
+      {"id": 1, "orderId": 1, "employeeId": 3},
+      {"id": 2, "orderId": 2, "employeeId": 4}
+    ]
+  }
