@@ -71,7 +71,7 @@ export const OrderDetails = () => {
             <div>
                 <button
                     onClick={() => {
-                        navigate("/newPizza");
+                        navigate("/newPizza", { state: { orderId: orderId } });
                     }}
                 >
                     Add Pizza
