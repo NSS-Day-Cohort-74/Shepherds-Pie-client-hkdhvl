@@ -16,14 +16,24 @@ export const OrderDetails = () => {
         getOrderById(orderId).then((data) => setOrderData(data));
     };
 
+    const addToTotal = (cost) => {
+        let copyTotalCost = totalCost ? totalCost : 0;
+        copyTotalCost += cost;
+        setTotalCost(copyTotalCost);
+    };
+
+    const subtractFromTotal = (cost) => {
+        let copyTotalCost = totalCost ? totalCost : 0;
+        copyTotalCost -= cost;
+        setTotalCost(copyTotalCost);
+    };
+
     useEffect(() => {
         resetPizzas();
     }, []);
 
     useEffect(() => {
-        let copyCost = totalCost ? totalCost : 0;
-        copyCost += pizzaCost;
-        setTotalCost(copyCost);
+        addToTotal(pizzaCost);
     }, [pizzaCost]);
 
     return (
@@ -44,7 +54,7 @@ export const OrderDetails = () => {
                         key={pizzaObject.id}
                         pizzaId={pizzaObject.id}
                         setPizzaCost={setPizzaCost}
-                        resetPizzas={resetPizzas}
+                        subtractFromTotal={subtractFromTotal}
                     />
                 ))}
             </div>

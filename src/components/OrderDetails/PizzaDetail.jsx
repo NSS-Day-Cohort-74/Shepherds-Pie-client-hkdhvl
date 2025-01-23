@@ -6,15 +6,23 @@ import {
 } from "../../services/orderService";
 import { ConfirmDelete } from "../modal/ConfirmDelete";
 
-export const PizzaDetail = ({ pizzaId, setPizzaCost, resetPizzas }) => {
+export const PizzaDetail = ({
+    pizzaId,
+    resetPizzas,
+    setPizzaCost,
+    subtractFromTotal,
+}) => {
     const [pizzaData, setPizzaData] = useState({});
     const [toppingData, setToppingData] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [localCost, setLocalCost] = useState(0);
 
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
+
     const handleRemovePizza = () => {
         setShowModal(false);
+        subtractFromTotal(localCost);
         deletePizzaById(pizzaData.id).then(resetPizzas());
     };
 
@@ -37,7 +45,15 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost, resetPizzas }) => {
                   )
                 : 0
         );
-    }, [pizzaData]);
+        setLocalCost(
+            pizzaData.size
+                ? parseInt(
+                      pizzaData.size?.cost +
+                          pizzaData.pizzaToppings?.length * 0.5
+                  )
+                : 0
+        );
+    }, [pizzaData.size?.cost]);
 
     return (
         <article>
@@ -56,7 +72,7 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost, resetPizzas }) => {
                 </div>
             </div>
             <div>
-                Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost:{" "}
+                Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost: $
                 {pizzaData.pizzaToppings?.length * 0.5}
             </div>
             <div>
