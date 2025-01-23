@@ -9,8 +9,8 @@ export const OrderDetails = () => {
     const navigate = useNavigate();
 
     const [orderData, setOrderData] = useState({});
-    const [pizzaCost, setPizzaCost] = useState(0);
-    const [totalCost, setTotalCost] = useState(0);
+    const [pizzaCost, setPizzaCost] = useState(0.0);
+    const [totalCost, setTotalCost] = useState(0.0);
 
     const resetPizzas = () => {
         getOrderById(orderId).then((data) => setOrderData(data));
@@ -23,7 +23,7 @@ export const OrderDetails = () => {
     };
 
     const subtractFromTotal = (cost) => {
-        let copyTotalCost = totalCost ? totalCost : 0;
+        let copyTotalCost = totalCost ? totalCost : 0.0;
         copyTotalCost -= cost;
         setTotalCost(copyTotalCost);
     };
@@ -58,7 +58,7 @@ export const OrderDetails = () => {
                     />
                 ))}
             </div>
-            <div>Total Cost: {totalCost}</div>
+            <div>Total Cost: ${totalCost.toFixed(2)}</div>
             <div>
                 <button
                     onClick={() => {

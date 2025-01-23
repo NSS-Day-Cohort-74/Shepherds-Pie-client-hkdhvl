@@ -15,7 +15,7 @@ export const PizzaDetail = ({
     const [pizzaData, setPizzaData] = useState({});
     const [toppingData, setToppingData] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [localCost, setLocalCost] = useState(0);
+    const [localCost, setLocalCost] = useState(0.0);
 
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
@@ -39,18 +39,12 @@ export const PizzaDetail = ({
     useEffect(() => {
         setPizzaCost(
             pizzaData.size
-                ? parseInt(
-                      pizzaData.size?.cost +
-                          pizzaData.pizzaToppings?.length * 0.5
-                  )
+                ? pizzaData.size?.cost + pizzaData.pizzaToppings?.length * 0.5
                 : 0
         );
         setLocalCost(
             pizzaData.size
-                ? parseInt(
-                      pizzaData.size?.cost +
-                          pizzaData.pizzaToppings?.length * 0.5
-                  )
+                ? pizzaData.size?.cost + pizzaData.pizzaToppings?.length * 0.5
                 : 0
         );
     }, [pizzaData.size?.cost]);
