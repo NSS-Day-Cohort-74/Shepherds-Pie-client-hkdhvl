@@ -1,5 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { NavBar } from "../components/NavBar/NavBar";
+import { NewOrder } from "../components/NewOrder/NewOrder";
 
 export const ApplicationViews = () => {
     return (
@@ -12,6 +13,7 @@ export const ApplicationViews = () => {
 
             }>
                 <Route index element={<>HELLOWORLD</>} />
+                <Route path="newOrder" element={<NewOrder />} />
             </Route>
         </Routes>
     );
