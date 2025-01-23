@@ -19,3 +19,12 @@ export const getToppingByPizzaId = async (pizzaId) => {
     const data = await response.json()
     return data
 }
+
+// delete pizzas
+
+export const deletePizzaById = async (pizzaId) => {
+    const pizzaDeleteResponse = await fetch(`http://localhost:8088/pizzas/${pizzaId}`, {
+        method: "DELETE"
+    })
+
+}

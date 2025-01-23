@@ -1,10 +1,31 @@
 import { useEffect, useState } from "react";
-import { getPizzaById, getToppingByPizzaId } from "../../services/orderService";
-import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
+import {
+    deletePizzaById,
+    getPizzaById,
+    getToppingByPizzaId,
+} from "../../services/orderService";
+import { ConfirmDelete } from "../modal/ConfirmDelete";
 
-export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
+export const PizzaDetail = ({
+    pizzaId,
+    resetPizzas,
+    setPizzaCost,
+    subtractFromTotal,
+}) => {
     const [pizzaData, setPizzaData] = useState({});
     const [toppingData, setToppingData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [localCost, setLocalCost] = useState(0.0);
+
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+
+    const handleRemovePizza = () => {
+        setShowModal(false);
+        subtractFromTotal(localCost);
+        deletePizzaById(pizzaData.id);
+        resetPizzas();
+    };
 
     useEffect(() => {
         getPizzaById(pizzaId).then((pizzaData) => setPizzaData(pizzaData));
@@ -19,13 +40,15 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
     useEffect(() => {
         setPizzaCost(
             pizzaData.size
-                ? parseInt(
-                      pizzaData.size?.cost +
-                          pizzaData.pizzaToppings?.length * 0.5
-                  )
+                ? pizzaData.size?.cost + pizzaData.pizzaToppings?.length * 0.5
                 : 0
         );
-    }, [pizzaData]);
+        setLocalCost(
+            pizzaData.size
+                ? pizzaData.size?.cost + pizzaData.pizzaToppings?.length * 0.5
+                : 0
+        );
+    }, [pizzaData.size?.cost]);
 
     return (
         <article>
@@ -44,8 +67,18 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
                 </div>
             </div>
             <div>
-                Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost:{" "}
+                Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost: $
                 {pizzaData.pizzaToppings?.length * 0.5}
+            </div>
+            <div>
+                <button onClick={handleOpenModal}>remove pizza</button>
+                <ConfirmDelete
+                    isOpen={showModal}
+                    onClose={handleCloseModal}
+                    onConfirm={handleRemovePizza}
+                >
+                    <h2>Are you sure you want to remove a pizza?</h2>
+                </ConfirmDelete>
             </div>
         </article>
     );

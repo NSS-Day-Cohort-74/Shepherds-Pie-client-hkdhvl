@@ -59,6 +59,7 @@
     ],
     "pizzaToppings": [
       {"id": 1, "toppingId": 1, "pizzaId": 1},
+      {"id": 3, "toppingId": 3, "pizzaId": 1},
       {"id": 2, "toppingId": 2, "pizzaId": 2}
     ],
     "orderEmployees": [

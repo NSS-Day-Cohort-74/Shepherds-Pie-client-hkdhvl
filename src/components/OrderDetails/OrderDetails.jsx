@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
 import { getOrderById } from "../../services/orderService";
@@ -6,20 +6,51 @@ import { PizzaDetail } from "./PizzaDetail";
 
 export const OrderDetails = () => {
     const { orderId } = useParams();
+    const navigate = useNavigate();
 
     const [orderData, setOrderData] = useState({});
-    const [pizzaCost, setPizzaCost] = useState(0);
-    const [totalCost, setTotalCost] = useState(0);
+    const [pizzaCost, setPizzaCost] = useState(0.0);
+    const [totalCost, setTotalCost] = useState(0.0);
+
+    const resetPizzas = () => {
+        getOrderById(orderId).then((data) => setOrderData(data));
+    };
+
+    const addToTotal = (cost) => {
+        let copyTotalCost = totalCost ? totalCost : 0;
+        copyTotalCost += cost;
+        setTotalCost(copyTotalCost);
+    };
+
+    const subtractFromTotal = (cost) => {
+        let copyTotalCost = totalCost ? totalCost : 0.0;
+        copyTotalCost -= cost;
+        setTotalCost(copyTotalCost);
+    };
+
+    const generatePizzaList = () => {
+        return orderData.pizzas?.map((pizzaObject) => (
+            <PizzaDetail
+                key={pizzaObject.id}
+                pizzaId={pizzaObject.id}
+                setPizzaCost={setPizzaCost}
+                subtractFromTotal={subtractFromTotal}
+                resetPizzas={resetPizzas}
+            />
+        ));
+    };
 
     useEffect(() => {
-        getOrderById(orderId).then((data) => setOrderData(data));
+        resetPizzas();
     }, []);
 
     useEffect(() => {
-        let copyCost = totalCost ? totalCost : 0;
-        copyCost += pizzaCost;
-        setTotalCost(copyCost);
+        addToTotal(pizzaCost);
     }, [pizzaCost]);
+
+    useEffect(() => {
+        generatePizzaList();
+    }, [orderData]);
 
     return (
         <section>
@@ -34,15 +65,18 @@ export const OrderDetails = () => {
             </div>
             <div>
                 Pizza List:
-                {orderData.pizzas?.map((pizzaObject) => (
-                    <PizzaDetail
-                        key={pizzaObject.id}
-                        pizzaId={pizzaObject.id}
-                        setPizzaCost={setPizzaCost}
-                    />
-                ))}
+                {generatePizzaList()}
             </div>
-            <div>Total Cost: {totalCost}</div>
+            <div>Total Cost: ${totalCost.toFixed(2)}</div>
+            <div>
+                <button
+                    onClick={() => {
+                        navigate("/newPizza", { state: { orderId: orderId } });
+                    }}
+                >
+                    Add Pizza
+                </button>
+            </div>
         </section>
     );
 };
