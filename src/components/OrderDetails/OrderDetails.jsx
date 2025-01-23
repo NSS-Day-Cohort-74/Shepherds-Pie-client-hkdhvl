@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
 import { getOrderById } from "../../services/orderService";
@@ -6,13 +6,18 @@ import { PizzaDetail } from "./PizzaDetail";
 
 export const OrderDetails = () => {
     const { orderId } = useParams();
+    const navigate = useNavigate();
 
     const [orderData, setOrderData] = useState({});
     const [pizzaCost, setPizzaCost] = useState(0);
     const [totalCost, setTotalCost] = useState(0);
 
-    useEffect(() => {
+    const resetPizzas = () => {
         getOrderById(orderId).then((data) => setOrderData(data));
+    };
+
+    useEffect(() => {
+        resetPizzas();
     }, []);
 
     useEffect(() => {
@@ -39,10 +44,20 @@ export const OrderDetails = () => {
                         key={pizzaObject.id}
                         pizzaId={pizzaObject.id}
                         setPizzaCost={setPizzaCost}
+                        resetPizzas={resetPizzas}
                     />
                 ))}
             </div>
             <div>Total Cost: {totalCost}</div>
+            <div>
+                <button
+                    onClick={() => {
+                        navigate("/newPizza");
+                    }}
+                >
+                    Add Pizza
+                </button>
+            </div>
         </section>
     );
 };

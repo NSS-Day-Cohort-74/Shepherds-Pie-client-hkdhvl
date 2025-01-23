@@ -1,10 +1,22 @@
 import { useEffect, useState } from "react";
-import { getPizzaById, getToppingByPizzaId } from "../../services/orderService";
-import { toHaveDescription } from "@testing-library/jest-dom/dist/matchers";
+import {
+    deletePizzaById,
+    getPizzaById,
+    getToppingByPizzaId,
+} from "../../services/orderService";
+import { ConfirmDelete } from "../modal/ConfirmDelete";
 
-export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
+export const PizzaDetail = ({ pizzaId, setPizzaCost, resetPizzas }) => {
     const [pizzaData, setPizzaData] = useState({});
     const [toppingData, setToppingData] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
+    const handleRemovePizza = () => {
+        setShowModal(false);
+        deletePizzaById(pizzaData.id).then(resetPizzas());
+    };
 
     useEffect(() => {
         getPizzaById(pizzaId).then((pizzaData) => setPizzaData(pizzaData));
@@ -46,6 +58,16 @@ export const PizzaDetail = ({ pizzaId, setPizzaCost }) => {
             <div>
                 Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost:{" "}
                 {pizzaData.pizzaToppings?.length * 0.5}
+            </div>
+            <div>
+                <button onClick={handleOpenModal}>remove pizza</button>
+                <ConfirmDelete
+                    isOpen={showModal}
+                    onClose={handleCloseModal}
+                    onConfirm={handleRemovePizza}
+                >
+                    <h2>Are you sure you want to remove a pizza?</h2>
+                </ConfirmDelete>
             </div>
         </article>
     );
