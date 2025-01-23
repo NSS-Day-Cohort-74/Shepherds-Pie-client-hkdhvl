@@ -26,10 +26,5 @@ export const deletePizzaById = async (pizzaId) => {
     const pizzaDeleteResponse = await fetch(`http://localhost:8088/pizzas/${pizzaId}`, {
         method: "DELETE"
     })
-    const pizzaToppingDeleteResponse = await fetch(`http://localhost:8088/pizzaToppings?pizzaId=${pizzaId}`, {
-        method: "DELETE"
-    })
-
-    return {pizzaResponse: pizzaDeleteResponse, toppingResponse: pizzaToppingDeleteResponse}
 
 }

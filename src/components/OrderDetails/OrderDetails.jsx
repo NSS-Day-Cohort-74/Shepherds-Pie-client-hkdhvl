@@ -55,6 +55,7 @@ export const OrderDetails = () => {
                         pizzaId={pizzaObject.id}
                         setPizzaCost={setPizzaCost}
                         subtractFromTotal={subtractFromTotal}
+                        resetPizzas={resetPizzas}
                     />
                 ))}
             </div>
