@@ -1,7 +1,7 @@
 import { useState } from "react"
 import "./NewOrder.css"
 import { createNewCustomer, getCustomerByEmail } from "../../services/customerService"
-import { createNewOrder, getOrderByCustomerId } from "../../services/orderService"
+import { createNewOrder } from "../../services/orderService"
 import { useNavigate } from "react-router-dom"
 
 export const NewOrder = () => {
@@ -36,7 +36,9 @@ export const NewOrder = () => {
                  return createNewOrder(newOrderObj)
                 })
                 .then((newOrderData) => {
-                    navigate(`/order/${newOrderData[0]?.id}`)
+                    console.log(newOrderData)
+
+                    navigate(`/order/${newOrderData.id}`)
                 })
         } else {
             window.alert("Please complete form")
@@ -49,7 +51,7 @@ export const NewOrder = () => {
             <h2>Customer Info</h2>
             <fieldset className="customer-info">
                 <div >
-                    <label>Name: </label>
+                    <label>Full Name: </label>
                     <input 
                         type="text" 
                         name="name"
