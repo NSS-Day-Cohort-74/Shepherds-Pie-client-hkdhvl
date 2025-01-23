@@ -21,3 +21,13 @@ export const getToppings = () => {
         res.json()
     )  
 }
+
+export const createNewPizza = async (order) => {
+    return fetch("http://localhost:8088/pizzas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(order),
+    }).then((res) => res.json())
+}

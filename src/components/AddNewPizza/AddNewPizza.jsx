@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { getCheeses, getSauces, getSizes, getToppings } from "../../services/pizzaService";
+import { createNewPizza, getCheeses, getSauces, getSizes, getToppings } from "../../services/pizzaService";
 import "./AddNewPizza.css";
+import { useNavigate } from "react-router-dom";
 // import { getPizzaData } from "../../services/orderService"
 
 export const AddNewPizza = () => {
   const [allSizes, setAllSizes] = useState([]);
-  const [selectedSize, setSelectedSize] = useState("")
-  const [selectedCheese, setSelectedCheese] = useState("");
+  const [selectedSize, setSelectedSize] = useState(0)
+  const [selectedCheese, setSelectedCheese] = useState(0);
   const [allCheeses, setAllCheeses] = useState([]);
-  const [selectedSauces, setSelectedSauces] = useState("")
+  const [selectedSauces, setSelectedSauces] = useState(0)
   const [allSauces, setAllSauces] = useState([])
-  const [selectedToppings, setSelectedToppings] = useState("")
+  const [selectedToppings, setSelectedToppings] = useState(0)
   const [allToppings, setAllToppings] = useState([])
+  const [pizzas, setPizzas] = useState([]);
+  const navigate = useNavigate()
 
   const fetchAllPizzaInfo = async () => {
     try {
@@ -28,18 +31,33 @@ export const AddNewPizza = () => {
     }
   };
 
+
   const handleSizeChange = (event) => {
-    setSelectedSize(event.target.value);
+    setSelectedSize(parseInt(event.target.value));
   };
   const handleCheeseChange = (event) => {
-    setSelectedCheese(event.target.value);
+    setSelectedCheese(parseInt(event.target.value));
   };
   const handleSauceChange = (event) => {
-    setSelectedSauces(event.target.value);
+    setSelectedSauces(parseInt(event.target.value));
   };
   const handleToppingsChange = (event) => {
-    setSelectedToppings(event.target.value);
+    setSelectedToppings(parseInt(event.target.value));
   };
+
+  const handleNewPizza = () => {
+    const newOrder = {
+        sizeId: selectedSize,
+        cheeseId: selectedCheese,
+        sauceId: selectedSauces
+
+    }
+    setPizzas(prev => [...prev, newOrder]);
+    
+    createNewPizza(newOrder).then(() => {
+        navigate("/order");
+    })
+  }
   
   useEffect(() => {
     fetchAllPizzaInfo();
@@ -106,6 +124,8 @@ export const AddNewPizza = () => {
           </select>
         </div>
 
+            <button className="pizza-button"
+            onClick={handleNewPizza}>Save Pizza</button>
 
       </div>
     </>
