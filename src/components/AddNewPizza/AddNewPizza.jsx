@@ -42,6 +42,7 @@ export const AddNewPizza = () => {
     }
   };
 
+
   const handleSizeChange = (event) => {
     setSelectedSize(parseInt(event.target.value));
   };
@@ -88,6 +89,20 @@ const handleNewPizza = (pizza) => {
     });
 };
 
+//   const handleNewPizza = () => {
+//     const newOrder = {
+//         sizeId: selectedSize,
+//         cheeseId: selectedCheese,
+//         sauceId: selectedSauces
+
+//     }
+//     setPizzas(prev => [...prev, newOrder]);
+    
+//     createNewPizza(newOrder).then(() => {
+//         navigate("/order");
+//     })
+//   }
+  
   useEffect(() => {
     fetchAllPizzaInfo();
   }, []);
