@@ -1,0 +1,25 @@
+.new-customer-form {
+    justify-items: center;
+}
+
+.new-customer-form > h2 {
+    text-shadow: 2px 2px lightblue;
+}
+
+.customer-info {
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px lightblue;
+}
+
+.btn {
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.btn:hover {
+    background-color: pink;
+}
