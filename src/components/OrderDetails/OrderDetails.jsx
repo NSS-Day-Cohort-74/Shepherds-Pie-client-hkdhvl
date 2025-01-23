@@ -28,6 +28,18 @@ export const OrderDetails = () => {
         setTotalCost(copyTotalCost);
     };
 
+    const generatePizzaList = () => {
+        return orderData.pizzas?.map((pizzaObject) => (
+            <PizzaDetail
+                key={pizzaObject.id}
+                pizzaId={pizzaObject.id}
+                setPizzaCost={setPizzaCost}
+                subtractFromTotal={subtractFromTotal}
+                resetPizzas={resetPizzas}
+            />
+        ));
+    };
+
     useEffect(() => {
         resetPizzas();
     }, []);
@@ -35,6 +47,10 @@ export const OrderDetails = () => {
     useEffect(() => {
         addToTotal(pizzaCost);
     }, [pizzaCost]);
+
+    useEffect(() => {
+        generatePizzaList();
+    }, [orderData]);
 
     return (
         <section>
@@ -49,15 +65,7 @@ export const OrderDetails = () => {
             </div>
             <div>
                 Pizza List:
-                {orderData.pizzas?.map((pizzaObject) => (
-                    <PizzaDetail
-                        key={pizzaObject.id}
-                        pizzaId={pizzaObject.id}
-                        setPizzaCost={setPizzaCost}
-                        subtractFromTotal={subtractFromTotal}
-                        resetPizzas={resetPizzas}
-                    />
-                ))}
+                {generatePizzaList()}
             </div>
             <div>Total Cost: ${totalCost.toFixed(2)}</div>
             <div>

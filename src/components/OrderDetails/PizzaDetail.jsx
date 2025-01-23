@@ -23,7 +23,8 @@ export const PizzaDetail = ({
     const handleRemovePizza = () => {
         setShowModal(false);
         subtractFromTotal(localCost);
-        deletePizzaById(pizzaData.id).then(resetPizzas());
+        deletePizzaById(pizzaData.id);
+        resetPizzas();
     };
 
     useEffect(() => {
