@@ -56,14 +56,7 @@ export const AddNewPizza = () => {
     setSelectedToppings(parseInt(event.target.value));
   };
 
-//   const handleNewToppings = () => {
-//     const newTopping = {
-//       toppingId
-//       pizzaId: pizzas.id
-//     };
 
-//     createToppingsForPizza(newTopping);
-//   };
 
 const handleNewPizza = (pizza) => {
    
@@ -89,19 +82,7 @@ const handleNewPizza = (pizza) => {
     });
 };
 
-//   const handleNewPizza = () => {
-//     const newOrder = {
-//         sizeId: selectedSize,
-//         cheeseId: selectedCheese,
-//         sauceId: selectedSauces
 
-//     }
-//     setPizzas(prev => [...prev, newOrder]);
-    
-//     createNewPizza(newOrder).then(() => {
-//         navigate("/order");
-//     })
-//   }
   
   useEffect(() => {
     fetchAllPizzaInfo();
