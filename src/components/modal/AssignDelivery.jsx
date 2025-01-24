@@ -36,33 +36,37 @@ export const AssignEmployee = ({
     }, [assignedEmployeeId]);
 
     const handleAssignment = () => {
-        const orderEmployeeObject = {
-            orderId: parseInt(currentOrderId),
-            employeeId: parseInt(assignedEmployeeId),
-        };
-        // POST NEW orderEmployees Object
-        newOrderEmployee(orderEmployeeObject);
+        if (assignedEmployeeObject) {
+            const orderEmployeeObject = {
+                orderId: parseInt(currentOrderId),
+                employeeId: parseInt(assignedEmployeeId),
+            };
+            // POST NEW orderEmployees Object
+            newOrderEmployee(orderEmployeeObject);
 
-        //PUT to selected employee, changing isAvailble to false
-        const employeeObjectCopy = { ...assignedEmployeeObject };
-        employeeObjectCopy.isAvailable = false;
-        employeeObjectCopy.roleId = 3;
-        updateEmployeeAvailable(assignedEmployeeId, employeeObjectCopy);
+            //PUT to selected employee, changing isAvailble to false
+            const employeeObjectCopy = { ...assignedEmployeeObject };
+            employeeObjectCopy.isAvailable = false;
+            employeeObjectCopy.roleId = 3;
+            updateEmployeeAvailable(assignedEmployeeId, employeeObjectCopy);
 
-        //PUT to current order, changing status to "Out for Delivery"
-        const orderDataCopy = {
-            id: orderData.id,
-            dateTime: orderData.dateTime,
-            status: "Out for Delivery",
-            customerId: orderData.customerId,
-            tip: orderData.tip,
-            isDelivery: orderData.isDelivery,
-        };
-        updateOrderStatus(currentOrderId, orderDataCopy);
+            //PUT to current order, changing status to "Out for Delivery"
+            const orderDataCopy = {
+                id: orderData.id,
+                dateTime: orderData.dateTime,
+                status: "Out for Delivery",
+                customerId: orderData.customerId,
+                tip: orderData.tip,
+                isDelivery: orderData.isDelivery,
+            };
+            updateOrderStatus(currentOrderId, orderDataCopy);
 
-        setDriver(assignedEmployeeObject.name);
+            setDriver(assignedEmployeeObject.name);
 
-        resetPizzas();
+            resetPizzas();
+        } else {
+            window.alert("!!choose a driver");
+        }
     };
 
     if (!isOpen) return null;
@@ -75,6 +79,7 @@ export const AssignEmployee = ({
                         setAssignedEmployeeId(parseInt(event.target.value))
                     }
                 >
+                    <option>Choose a Driver</option>
                     {employeeArray.map((employeeObject) => {
                         return (
                             <option
