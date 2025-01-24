@@ -4,6 +4,7 @@ import { NewOrder } from "../components/NewOrder/NewOrder";
 import { OrderDetails } from "../components/OrderDetails/OrderDetails";
 import { OrderList } from "../components/OrderList/OrderList";
 import { EmployeeDetails } from "../components/Employees/EmployeeDetails";
+import { SalesReport } from "../components/SalesReport/SalesReport";
 
 export const ApplicationViews = () => {
     return (
@@ -28,6 +29,7 @@ export const ApplicationViews = () => {
                 <Route path="employee">
                     <Route path=":employeeId" element={<EmployeeDetails />} />
                 </Route>
+                <Route path="salesReport" element={<SalesReport />} />
             </Route>
         </Routes>
     );
