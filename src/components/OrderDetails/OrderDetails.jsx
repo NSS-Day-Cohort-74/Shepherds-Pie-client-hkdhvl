@@ -1,21 +1,28 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
 import { deleteOrderById, getOrderById } from "../../services/orderService";
 import { PizzaDetail } from "./PizzaDetail";
 import { ConfirmDelete } from "../modal/ConfirmDelete";
+import { AssignEmployee } from "../modal/AssignDelivery";
 
 export const OrderDetails = () => {
     const { orderId } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [orderData, setOrderData] = useState({});
     const [pizzaCost, setPizzaCost] = useState(0.0);
     const [totalCost, setTotalCost] = useState(0.0);
+    const [deliveryDriver, setDriver] = useState("");
 
     const [showModal, setShowModal] = useState(false);
     const handleOpenModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
+
+    const [showAssignModal, setShowAssignModal] = useState(false);
+    const handleOpenAssignModal = () => setShowAssignModal(true);
+    const handleCloseAssignModal = () => setShowAssignModal(false);
 
     const resetPizzas = () => {
         getOrderById(orderId).then((data) => setOrderData(data));
@@ -61,13 +68,39 @@ export const OrderDetails = () => {
 
     useEffect(() => {
         generatePizzaList();
-    }, [orderData]);
+    }, [orderData, location]);
 
     return (
         <section>
             <div>OrderId: {orderData.id}</div>
             <div>Order DateTime: {orderData.dateTime}</div>
             <div>Order Status: {orderData.status}</div>
+            {orderData.status === "Out for Delivery" ? (
+                <div>Driver: {deliveryDriver}</div>
+            ) : (
+                ""
+            )}
+            <div>
+                {orderData?.isDelivery &&
+                orderData?.status !== "Delivered" &&
+                orderData?.status !== "Out for Delivery" ? (
+                    <>
+                        <button onClick={handleOpenAssignModal}>
+                            Assign Delivery
+                        </button>
+                        <AssignEmployee
+                            isOpen={showAssignModal}
+                            onClose={handleCloseAssignModal}
+                            currentOrderId={orderId}
+                            orderData={orderData}
+                            resetPizzas={resetPizzas}
+                            setDriver={setDriver}
+                        ></AssignEmployee>
+                    </>
+                ) : (
+                    ""
+                )}
+            </div>
             <div>
                 <h3>Customer Name: {orderData.customer?.name}</h3>
                 <p>Customer Email: {orderData.customer?.email}</p>
