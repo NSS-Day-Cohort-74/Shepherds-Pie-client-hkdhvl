@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
 import { deleteOrderById, getOrderById } from "../../services/orderService";
@@ -9,6 +9,7 @@ import { AssignEmployee } from "../modal/AssignDelivery";
 export const OrderDetails = () => {
     const { orderId } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [orderData, setOrderData] = useState({});
     const [pizzaCost, setPizzaCost] = useState(0.0);
@@ -67,7 +68,7 @@ export const OrderDetails = () => {
 
     useEffect(() => {
         generatePizzaList();
-    }, [orderData]);
+    }, [orderData, location]);
 
     return (
         <section>

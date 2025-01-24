@@ -61,7 +61,7 @@ export const AssignEmployee = ({
             updateOrderStatus(currentOrderId, orderDataCopy);
 
             setDriver(assignedEmployeeObject.name);
-
+            onClose();
             resetPizzas();
         } else {
             window.alert("!!choose a driver");
