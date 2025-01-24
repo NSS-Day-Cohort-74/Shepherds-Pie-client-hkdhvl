@@ -3,8 +3,10 @@ import { NavBar } from "../components/NavBar/NavBar";
 import { NewOrder } from "../components/NewOrder/NewOrder";
 import { OrderDetails } from "../components/OrderDetails/OrderDetails";
 import { OrderList } from "../components/OrderList/OrderList";
+import { AddNewPizza } from "../components/AddNewPizza/AddNewPizza";
 import { EmployeeDetails } from "../components/Employees/EmployeeDetails";
 import { SalesReport } from "../components/SalesReport/SalesReport";
+
 
 export const ApplicationViews = () => {
     return (
@@ -22,15 +24,18 @@ export const ApplicationViews = () => {
                <Route path="newOrder" element={<NewOrder />} />
                 <Route path="OrderList">
                     <Route index element={<OrderList />} />
-                </Route>   
+                </Route>
                 <Route path="order">
                     <Route path=":orderId" element={<OrderDetails />} />
+                </Route>
+                <Route path="newPizza">
+                    <Route index element={<AddNewPizza />} />
                 </Route>
                 <Route path="employee">
                     <Route path=":employeeId" element={<EmployeeDetails />} />
                 </Route>
                 <Route path="salesReport" element={<SalesReport />} />
-            </Route>
+              </Route>
         </Routes>
     );
 };
