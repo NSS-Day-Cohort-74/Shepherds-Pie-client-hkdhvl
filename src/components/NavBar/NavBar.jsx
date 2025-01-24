@@ -5,7 +5,7 @@ export const NavBar = () => {
     return (
         <ul>
             <li>
-                <Link className="navbar-link">Home</Link>
+                <Link to="/home" className="navbar-link">Home</Link>
             </li>
             <li>
                 <Link to="/newOrder" className="navbar-link">New Order</Link>
@@ -19,7 +19,6 @@ export const NavBar = () => {
             <li>
                 <Link to="/salesReport" className="navbar-link">Sales Report</Link>
             </li>
-
             {localStorage.getItem("employee_user") ? (
                 <li>
                     <Link
