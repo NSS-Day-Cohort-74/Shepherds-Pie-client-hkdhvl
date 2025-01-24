@@ -1,9 +1,12 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { NavBar } from "../components/NavBar/NavBar";
+import { NewOrder } from "../components/NewOrder/NewOrder";
 import { OrderDetails } from "../components/OrderDetails/OrderDetails";
 import { OrderList } from "../components/OrderList/OrderList";
-import { SalesReport } from "../components/SalesReport/SalesReport";
 import { AddNewPizza } from "../components/AddNewPizza/AddNewPizza";
+import { EmployeeDetails } from "../components/Employees/EmployeeDetails";
+import { SalesReport } from "../components/SalesReport/SalesReport";
+
 
 export const ApplicationViews = () => {
     return (
@@ -18,19 +21,21 @@ export const ApplicationViews = () => {
                 }
             >
               <Route index element={<>HELLOWORLD</>} />
+               <Route path="newOrder" element={<NewOrder />} />
                 <Route path="OrderList">
                     <Route index element={<OrderList />} />
-                </Route>   
-                <Route path="Sales-Report">
-                    <Route index element={<SalesReport />} />
-                </Route> 
+                </Route>
                 <Route path="order">
                     <Route path=":orderId" element={<OrderDetails />} />
                 </Route>
                 <Route path="newPizza">
                     <Route index element={<AddNewPizza />} />
                 </Route>
-            </Route>
+                <Route path="employee">
+                    <Route path=":employeeId" element={<EmployeeDetails />} />
+                </Route>
+                <Route path="salesReport" element={<SalesReport />} />
+              </Route>
         </Routes>
     );
 };

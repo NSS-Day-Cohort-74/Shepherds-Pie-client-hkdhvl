@@ -1,0 +1,25 @@
+.employee-form {
+    justify-items: center;
+}
+
+.employee-form > h2 {
+    text-shadow: 2px 2px lightblue;
+}
+
+.employee-info {
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px lightblue;
+}
+
+.btn {
+    background-color: lightblue;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 1px 1px 3px black;
+}
+
+.btn:hover {
+    background-color: pink;
+}
