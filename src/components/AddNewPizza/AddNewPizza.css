@@ -1,0 +1,78 @@
+.pizza-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pizza-container h2 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .size-selection,
+  .cheese-selection,
+  .sauce-selection,
+  .toppings-selection {
+    margin-bottom: 2rem;
+  }
+  
+  select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    background-color: #f8fafc;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+  }
+  
+  .pizza-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .pizza-button:hover {
+    background-color: #c53030;
+  }
+  
+  .pizza-button:active {
+    transform: translateY(1px);
+  }
+  
+  @media (max-width: 640px) {
+    .pizza-container {
+      margin: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  .toppings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .topping-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
