@@ -14,7 +14,6 @@ import {
 export const AssignEmployee = ({
     isOpen,
     onClose,
-    onConfirm,
     children,
     currentOrderId,
     orderData,
