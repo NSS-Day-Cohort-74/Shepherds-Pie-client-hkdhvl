@@ -136,7 +136,7 @@
       "status": "Pending",
       "customerId": 2,
       "tip": 3,
-      "isDelivery": false
+      "isDelivery": true
     }
   ],
   "pizzas": [

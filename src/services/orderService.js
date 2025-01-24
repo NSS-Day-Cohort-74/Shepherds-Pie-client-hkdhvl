@@ -33,7 +33,6 @@ export const getToppingByPizzaId = async (pizzaId) => {
 }
 
 // delete pizzas
-
 export const deletePizzaById = async (pizzaId) => {
     const pizzaDeleteResponse = await fetch(`http://localhost:8088/pizzas/${pizzaId}`, {
         method: "DELETE"
@@ -45,4 +44,43 @@ export const deleteOrderById = async (orderId) => {
     const deleteOrder = await fetch(`http://localhost:8088/orders/${orderId}`, {
         method: "DELETE"
     })
+}
+
+//  Delivery Assignment Fetches
+
+export const newOrderEmployee = async (submissionObject) => {
+    const response = await fetch(`http://localhost:8088/orderEmployees`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(submissionObject)
+    })
+    const data = await response.json()
+
+    return data
+}
+
+export const updateEmployeeAvailable = async (employeeId, submissionObject) => {
+    const response = await fetch(`http://localhost:8088/employees/${employeeId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(submissionObject)
+    })
+    const data = await response.json()
+    return data
+}
+
+export const updateOrderStatus = async (orderId, submissionObject) => {
+    const response = await fetch(`http://localhost:8088/orders/${orderId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(submissionObject)
+    })
+    const data = await response.json()
+    return data
 }

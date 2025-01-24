@@ -1,3 +1,7 @@
 .modal-overlay {
     background-color: red;
 }
+
+.modal-overlay-delivery {
+    background-color: palevioletred;
+}

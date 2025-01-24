@@ -11,3 +11,9 @@ export const updateEmployee = (employee) => {
         body: JSON.stringify(employee)
     })
 }
+
+export const getAvailableEmployees = async () => {
+    const response = await fetch("http://localhost:8088/employees?isAvailable=true")
+    const data = await response.json()
+    return data
+}
