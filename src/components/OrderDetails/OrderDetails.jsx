@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./OrderDetails.css";
 import { useEffect, useState } from "react";
-import { getOrderById } from "../../services/orderService";
+import { deleteOrderById, getOrderById } from "../../services/orderService";
 import { PizzaDetail } from "./PizzaDetail";
+import { ConfirmDelete } from "../modal/ConfirmDelete";
 
 export const OrderDetails = () => {
     const { orderId } = useParams();
@@ -11,6 +12,10 @@ export const OrderDetails = () => {
     const [orderData, setOrderData] = useState({});
     const [pizzaCost, setPizzaCost] = useState(0.0);
     const [totalCost, setTotalCost] = useState(0.0);
+
+    const [showModal, setShowModal] = useState(false);
+    const handleOpenModal = () => setShowModal(true);
+    const handleCloseModal = () => setShowModal(false);
 
     const resetPizzas = () => {
         getOrderById(orderId).then((data) => setOrderData(data));
@@ -38,6 +43,12 @@ export const OrderDetails = () => {
                 resetPizzas={resetPizzas}
             />
         ));
+    };
+
+    const handleCancelOrder = () => {
+        deleteOrderById(orderData.id).then(() => {
+            navigate("/OrderList");
+        });
     };
 
     useEffect(() => {
@@ -76,6 +87,16 @@ export const OrderDetails = () => {
                 >
                     Add Pizza
                 </button>
+            </div>
+            <div>
+                <button onClick={handleOpenModal}>Cancel Order</button>
+                <ConfirmDelete
+                    isOpen={showModal}
+                    onClose={handleCloseModal}
+                    onConfirm={handleCancelOrder}
+                >
+                    <h2>Are you sure you want to cancel the order?</h2>
+                </ConfirmDelete>
             </div>
         </section>
     );

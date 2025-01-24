@@ -40,3 +40,9 @@ export const deletePizzaById = async (pizzaId) => {
     })
 
 }
+
+export const deleteOrderById = async (orderId) => {
+    const deleteOrder = await fetch(`http://localhost:8088/orders/${orderId}`, {
+        method: "DELETE"
+    })
+}
