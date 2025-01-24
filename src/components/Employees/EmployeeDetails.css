@@ -23,3 +23,33 @@
 .btn:hover {
     background-color: pink;
 }
+
+.employees {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.employee-info-box {
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 3px lightblue;
+    border: 2px solid lightblue;
+    padding: 10px;
+}
+
+.employee {
+    text-decoration: none;
+    color: black;
+    
+}
+
+.employee-info-box:hover {
+    border: 2px solid pink;
+    box-shadow: 5px 5px 3px pink;
+}
+
+h2 {
+    text-shadow: 2px 2px lightblue;
+    text-align: center;
+}
+
