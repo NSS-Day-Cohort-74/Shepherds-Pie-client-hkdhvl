@@ -17,9 +17,8 @@ export const AddNewPizza = () => {
   const [allCheeses, setAllCheeses] = useState([]);
   const [selectedSauces, setSelectedSauces] = useState(1);
   const [allSauces, setAllSauces] = useState([]);
-  const [selectedToppings, setSelectedToppings] = useState(1);
+  const [selectedToppings, setSelectedToppings] = useState([]);
   const [allToppings, setAllToppings] = useState([]);
-  const [pizzas, setPizzas] = useState([]);
   const navigate = useNavigate();
 
   const location = useLocation();
@@ -50,10 +49,15 @@ export const AddNewPizza = () => {
   const handleSauceChange = (event) => {
     setSelectedSauces(parseInt(event.target.value));
   };
-  const handleToppingsChange = (event) => {
-    setSelectedToppings(parseInt(event.target.value));
+  const handleToppingsChange = (toppingId) => {
+    setSelectedToppings(prev => {
+      if (prev.includes(toppingId)) {
+        return prev.filter(id => id !== toppingId);
+      } else {
+        return [...prev, toppingId];
+      }
+    });
   };
-
 
 
 const handleNewPizza = (pizza) => {
@@ -66,16 +70,18 @@ const handleNewPizza = (pizza) => {
     };
 
     createNewPizza(newOrder).then((createdPizza) => {
-        const newTopping = {
-            toppingId: selectedToppings,
+        const toppingPromises = selectedToppings.map(toppingId => {
+          return createToppingsForPizza({
+            toppingId: toppingId,
             pizzaId: createdPizza.id
-        };
-        return createToppingsForPizza(newTopping);
+          });
+        });
+        return Promise.all(toppingPromises);
     }).then(() => {
         setSelectedSize(1);
         setSelectedCheese(1);
         setSelectedSauces(1);
-        setSelectedToppings(1);
+        setSelectedToppings([])
         navigate(`/order/${location.state?.orderId}`);
     });
 };
@@ -133,24 +139,24 @@ const handleNewPizza = (pizza) => {
         </div>
 
         <div className="toppings-selection">
-          <h2>Toppings</h2>
-          <select
-            id="topping"
-            value={selectedToppings}
-            onChange={handleToppingsChange}
-          >
-            {allToppings.map((t) => (
-              <option key={t.id} value={t.id}>
-                {t.name}
-              </option>
-            ))}
-          </select>
-        </div>
+  <h2>Toppings</h2>
+  <div className="toppings-grid">
+    {allToppings.map((topping) => (
+      <label key={topping.id} className="topping-checkbox">
+        <input
+          type="checkbox"
+          checked={selectedToppings.includes(topping.id)}
+          onChange={() => handleToppingsChange(topping.id)}
+        />
+        {topping.name}
+      </label>
+    ))}
+  </div>
+</div>
 
         <button
           className="pizza-button"
           onClick={() => {
-            // handleNewToppings();
             handleNewPizza();
           }}
         >
