@@ -9,7 +9,6 @@ import {
 } from "../../services/pizzaService";
 import "./AddNewPizza.css";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { getPizzaData } from "../../services/orderService"
 
 export const AddNewPizza = () => {
   const [allSizes, setAllSizes] = useState([]);
@@ -21,7 +20,6 @@ export const AddNewPizza = () => {
   const [selectedToppings, setSelectedToppings] = useState(1);
   const [allToppings, setAllToppings] = useState([]);
   const [pizzas, setPizzas] = useState([]);
-//   const [currentOrder, setCurrentOrder] = useState(0)
   const navigate = useNavigate();
 
   const location = useLocation();
