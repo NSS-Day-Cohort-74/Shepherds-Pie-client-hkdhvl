@@ -17,7 +17,7 @@ export const NavBar = () => {
                 <Link className="navbar-link">Employee List</Link>
             </li>
             <li>
-                <Link className="navbar-link">Sales Report</Link>
+                <Link to="/salesReport" className="navbar-link">Sales Report</Link>
             </li>
 
             {localStorage.getItem("employee_user") ? (
