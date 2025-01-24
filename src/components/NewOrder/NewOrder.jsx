@@ -9,6 +9,7 @@ export const NewOrder = () => {
     const [customerEmail, setCustomerEmail] = useState("")
     const [customerAddress, setCustomerAddress] = useState("")
     const [customerPhone, setCustomerPhone] = useState("")
+    const [isDelivery, setIsDelivery] = useState(false)
 
     const navigate = useNavigate()
 
@@ -30,10 +31,10 @@ export const NewOrder = () => {
                         dateTime: new Date(),
                         status: "Pending",
                         tip: 0,
-                        isDelivery: false,
+                        isDelivery: isDelivery,
                         customerId: data[0].id
                     }
-                 return createNewOrder(newOrderObj)
+                    return createNewOrder(newOrderObj)
                 })
                 .then((newOrderData) => {
                     console.log(newOrderData)
@@ -52,8 +53,8 @@ export const NewOrder = () => {
             <fieldset className="customer-info">
                 <div >
                     <label>Full Name: </label>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         name="name"
                         value={customerName}
                         onChange={(event) => setCustomerName(event.target.value)}
@@ -63,7 +64,7 @@ export const NewOrder = () => {
             <fieldset className="customer-info">
                 <div >
                     <label>Email: </label>
-                    <input 
+                    <input
                         type="text"
                         name="email"
                         value={customerEmail}
@@ -74,7 +75,7 @@ export const NewOrder = () => {
             <fieldset className="customer-info">
                 <div >
                     <label>Address: </label>
-                    <input 
+                    <input
                         type="text"
                         name="address"
                         value={customerAddress}
@@ -85,12 +86,22 @@ export const NewOrder = () => {
             <fieldset className="customer-info">
                 <div >
                     <label>Phone Number: </label>
-                    <input 
+                    <input
                         type="text"
                         name="phone"
                         value={customerPhone}
                         onChange={(event) => setCustomerPhone(event.target.value)}
                         required />
+                </div>
+            </fieldset>
+            <fieldset className="customer-info">
+                <div>
+                    <label>
+                        <input type="radio" name="orderType" checked={!isDelivery} onChange={() => setIsDelivery(false)} />Dine In
+                    </label>
+                    <label>
+                        <input type="radio" name="orderType" checked={isDelivery} onChange={() => setIsDelivery(true)} />Delivery
+                    </label>
                 </div>
             </fieldset>
             <button type="submit" onClick={handleSaveOrder} className="btn">Save Order</button>
