@@ -119,6 +119,15 @@ export const OrderDetails = () => {
                     {generatePizzaList()}
                 </div>
                 <h4>Total Cost: ${totalCost.toFixed(2)}</h4>
+                <div>
+                    <ConfirmDelete
+                        isOpen={showModal}
+                        onClose={handleCloseModal}
+                        onConfirm={handleCancelOrder}
+                    >
+                        <h2>Are you sure you want to cancel the order?</h2>
+                    </ConfirmDelete>
+                </div>
                 <div className="btn-container">
                     <button
                         onClick={() => {
@@ -130,15 +139,6 @@ export const OrderDetails = () => {
                         Add Pizza
                     </button>
                     <button onClick={handleOpenModal}>Cancel Order</button>
-                </div>
-                <div>
-                    <ConfirmDelete
-                        isOpen={showModal}
-                        onClose={handleCloseModal}
-                        onConfirm={handleCancelOrder}
-                    >
-                        <h2>Are you sure you want to cancel the order?</h2>
-                    </ConfirmDelete>
                 </div>
             </article>
         </section>
