@@ -6,9 +6,11 @@ export const ConfirmDelete = ({ isOpen, onClose, onConfirm, children }) => {
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button onClick={onConfirm}>Confirm</button>
-                <button onClick={onClose}>Close</button>
                 {children}
+                <div className="btn-container">
+                    <button onClick={onConfirm}>Confirm</button>
+                    <button onClick={onClose}>Close</button>
+                </div>
             </div>
         </div>
     );

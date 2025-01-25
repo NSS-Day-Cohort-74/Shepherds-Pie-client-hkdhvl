@@ -71,66 +71,74 @@ export const OrderDetails = () => {
     }, [orderData, location]);
 
     return (
-        <section>
-            <div>OrderId: {orderData.id}</div>
-            <div>Order DateTime: {orderData.dateTime}</div>
-            <div>Order Status: {orderData.status}</div>
-            {orderData.status === "Out for Delivery" ? (
-                <div>Driver: {deliveryDriver}</div>
-            ) : (
-                ""
-            )}
-            <div>
-                {orderData?.isDelivery &&
-                orderData?.status !== "Delivered" &&
-                orderData?.status !== "Out for Delivery" ? (
-                    <>
-                        <button onClick={handleOpenAssignModal}>
-                            Assign Delivery
-                        </button>
-                        <AssignEmployee
-                            isOpen={showAssignModal}
-                            onClose={handleCloseAssignModal}
-                            currentOrderId={orderId}
-                            orderData={orderData}
-                            resetPizzas={resetPizzas}
-                            setDriver={setDriver}
-                        ></AssignEmployee>
-                    </>
+        <section className="order-info-container">
+            <article className="order-info">
+                <div className="order-info-data">
+                    <h2>Order #{orderData.id}:</h2>
+                    <div>Order DateTime: {orderData.dateTime}</div>
+                    <div>Order Status: {orderData.status}</div>
+                </div>
+                {orderData.status === "Out for Delivery" ? (
+                    <div>Driver: {deliveryDriver}</div>
                 ) : (
                     ""
                 )}
-            </div>
-            <div>
-                <h3>Customer Name: {orderData.customer?.name}</h3>
-                <p>Customer Email: {orderData.customer?.email}</p>
-                <p>Customer phone: {orderData.customer?.phone}</p>
-                <p>Customer address: {orderData.customer?.address}</p>
-            </div>
-            <div>
-                Pizza List:
-                {generatePizzaList()}
-            </div>
-            <div>Total Cost: ${totalCost.toFixed(2)}</div>
-            <div>
-                <button
-                    onClick={() => {
-                        navigate("/newPizza", { state: { orderId: orderId } });
-                    }}
-                >
-                    Add Pizza
-                </button>
-            </div>
-            <div>
-                <button onClick={handleOpenModal}>Cancel Order</button>
-                <ConfirmDelete
-                    isOpen={showModal}
-                    onClose={handleCloseModal}
-                    onConfirm={handleCancelOrder}
-                >
-                    <h2>Are you sure you want to cancel the order?</h2>
-                </ConfirmDelete>
-            </div>
+                <div className="order-info-deliverydriver">
+                    {orderData?.isDelivery &&
+                    orderData?.status !== "Delivered" &&
+                    orderData?.status !== "Out for Delivery" ? (
+                        <>
+                            <button
+                                onClick={handleOpenAssignModal}
+                                className="order-info-btn"
+                            >
+                                Assign Delivery
+                            </button>
+                            <AssignEmployee
+                                isOpen={showAssignModal}
+                                onClose={handleCloseAssignModal}
+                                currentOrderId={orderId}
+                                orderData={orderData}
+                                resetPizzas={resetPizzas}
+                                setDriver={setDriver}
+                            ></AssignEmployee>
+                        </>
+                    ) : (
+                        ""
+                    )}
+                </div>
+
+                <div className="order-info-customer">
+                    <div>Customer Name: {orderData.customer?.name}</div>
+                    <div>Customer Email: {orderData.customer?.email}</div>
+                    <div>Customer phone: {orderData.customer?.phone}</div>
+                    <div>Customer address: {orderData.customer?.address}</div>
+                </div>
+                <div>
+                    <h3>Pizza List:</h3>
+                    {generatePizzaList()}
+                </div>
+                <h4>Total Cost: ${totalCost.toFixed(2)}</h4>
+                <div className="btn-container">
+                    <button
+                        onClick={() => {
+                            navigate("/newPizza", {
+                                state: { orderId: orderId },
+                            });
+                        }}
+                    >
+                        Add Pizza
+                    </button>
+                    <button onClick={handleOpenModal}>Cancel Order</button>
+                    <ConfirmDelete
+                        isOpen={showModal}
+                        onClose={handleCloseModal}
+                        onConfirm={handleCancelOrder}
+                    >
+                        <h2>Are you sure you want to cancel the order?</h2>
+                    </ConfirmDelete>
+                </div>
+            </article>
         </section>
     );
 };

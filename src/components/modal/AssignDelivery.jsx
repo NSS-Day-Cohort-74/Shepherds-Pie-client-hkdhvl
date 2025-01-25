@@ -90,9 +90,12 @@ export const AssignEmployee = ({
                         );
                     })}
                 </select>
-                <button onClick={handleAssignment}>Assign</button>
-                <button onClick={onClose}>Close</button>
                 {children}
+                <div className="btn-container">
+                    <button onClick={handleAssignment}>Assign</button>
+
+                    <button onClick={onClose}>Close</button>
+                </div>
             </div>
         </div>
     );
