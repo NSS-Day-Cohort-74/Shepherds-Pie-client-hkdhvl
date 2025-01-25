@@ -130,6 +130,8 @@ export const OrderDetails = () => {
                         Add Pizza
                     </button>
                     <button onClick={handleOpenModal}>Cancel Order</button>
+                </div>
+                <div>
                     <ConfirmDelete
                         isOpen={showModal}
                         onClose={handleCloseModal}
