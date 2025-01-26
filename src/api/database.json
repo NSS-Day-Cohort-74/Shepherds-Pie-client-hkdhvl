@@ -12,7 +12,7 @@
     {
       "id": 2,
       "name": "Bob Smith",
-      "email": "bob.s@example.com",
+      "email": "bob.smith@example.com",
       "address": "456 Oak St",
       "phone": "555-5678",
       "isAvailable": false,
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "name": "George Hill",
-      "email": "george.h@example.com",
+      "email": "george.hill@example.com",
       "address": "123 Spruce St",
       "phone": "555-9753",
       "isAvailable": true,
