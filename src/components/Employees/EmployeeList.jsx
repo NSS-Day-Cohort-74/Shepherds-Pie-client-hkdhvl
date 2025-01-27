@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
-import { getAllEmployees } from "../../services/employeeService"
+import { deleteEmployee, getAllEmployees } from "../../services/employeeService"
 import { Link } from "react-router-dom"
 
 export const EmployeeList = () => {
     const [allEmployees, setAllEmployees] = useState([])
 
-    useEffect(() => {
+    const getAndSetAllEmployees = () => {
         getAllEmployees().then(employeeArray => { setAllEmployees(employeeArray) })
+    }
+    useEffect(() => {
+        getAndSetAllEmployees()
     }, [])
 
     return (
@@ -22,6 +25,7 @@ export const EmployeeList = () => {
                     <div>Address: {employee.address}</div>
                     <div>Phone: {employee.phone}</div>
                     </Link>
+                    <button className="btn" onClick={() => {deleteEmployee(employee.id).then(getAndSetAllEmployees)}}>Delete</button>
                     </section>
                 )
             })}</div>
