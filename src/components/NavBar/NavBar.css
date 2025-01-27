@@ -5,6 +5,7 @@ ul {
     justify-content: center;
     background-color: lightblue;
     padding: 0.5em;
+    margin: 0;
 }
 
 li {

@@ -7,6 +7,7 @@ import { AddNewPizza } from "../components/AddNewPizza/AddNewPizza";
 import { EmployeeDetails } from "../components/Employees/EmployeeDetails";
 import { SalesReport } from "../components/SalesReport/SalesReport";
 import { EmployeeList } from "../components/Employees/EmployeeList";
+import { Home } from "../components/Home/Home";
 
 
 export const ApplicationViews = () => {
@@ -21,7 +22,7 @@ export const ApplicationViews = () => {
                     </>
                 }
             >
-              <Route index element={<>HELLOWORLD</>} />
+              <Route index element={<Home />} />
                <Route path="newOrder" element={<NewOrder />} />
                 <Route path="OrderList">
                     <Route index element={<OrderList />} />
@@ -35,6 +36,9 @@ export const ApplicationViews = () => {
                 <Route path="employeeList" element={<EmployeeList />} />
                 <Route path="employee" >
                     <Route path=":employeeId" element={<EmployeeDetails />} />
+                </Route>
+                <Route path="home">
+                    <Route index element={<Home />} />
                 </Route>
                 <Route path="salesReport" element={<SalesReport />} />
               </Route>
