@@ -14,7 +14,7 @@ export const NavBar = () => {
                 <Link className="navbar-link" to="/OrderList">Order List</Link>
             </li>
             <li>
-                <Link className="navbar-link">Employee List</Link>
+                <Link to="/employeeList" className="navbar-link">Employee List</Link>
             </li>
             <li>
                 <Link to="/salesReport" className="navbar-link">Sales Report</Link>

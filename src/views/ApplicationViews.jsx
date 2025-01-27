@@ -6,6 +6,7 @@ import { OrderList } from "../components/OrderList/OrderList";
 import { AddNewPizza } from "../components/AddNewPizza/AddNewPizza";
 import { EmployeeDetails } from "../components/Employees/EmployeeDetails";
 import { SalesReport } from "../components/SalesReport/SalesReport";
+import { EmployeeList } from "../components/Employees/EmployeeList";
 import { Home } from "../components/Home/Home";
 
 
@@ -32,7 +33,8 @@ export const ApplicationViews = () => {
                 <Route path="newPizza">
                     <Route index element={<AddNewPizza />} />
                 </Route>
-                <Route path="employee">
+                <Route path="employeeList" element={<EmployeeList />} />
+                <Route path="employee" >
                     <Route path=":employeeId" element={<EmployeeDetails />} />
                 </Route>
                 <Route path="home">

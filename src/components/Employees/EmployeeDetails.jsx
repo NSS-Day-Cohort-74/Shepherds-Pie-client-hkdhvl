@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 import "./EmployeeDetails.css"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getEmployeeById, updateEmployee } from "../../services/employeeService"
 
 export const EmployeeDetails = () => {
     const [employee, setEmployee] = useState([])
 
     const { employeeId } = useParams()
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getEmployeeById(employeeId).then(data => {
@@ -34,7 +36,7 @@ export const EmployeeDetails = () => {
         }
 
         updateEmployee(editedEmployee).then(() => {
-            window.alert("Changes have been saved")
+            navigate(`/employeeList`)
         })
     }
 

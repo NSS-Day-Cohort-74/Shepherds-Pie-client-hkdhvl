@@ -12,7 +12,7 @@
     {
       "id": 2,
       "name": "Bob Smith",
-      "email": "bob.s@example.com",
+      "email": "bob.smith@example.com",
       "address": "456 Oak St",
       "phone": "555-5678",
       "isAvailable": false,
@@ -24,7 +24,7 @@
       "email": "charlie.b@example.com",
       "address": "789 Pine St",
       "phone": "555-8765",
-      "isAvailable": true,
+      "isAvailable": false,
       "roleId": 3
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "name": "George Hill",
-      "email": "george.h@example.com",
+      "email": "george.hill@example.com",
       "address": "123 Spruce St",
       "phone": "555-9753",
       "isAvailable": true,
@@ -147,7 +147,7 @@
     {
       "id": 2,
       "dateTime": "2025-01-21 19:00:00",
-      "status": "Pending",
+      "status": "Out for Delivery",
       "customerId": 2,
       "tip": 3,
       "isDelivery": true
@@ -347,6 +347,11 @@
       "id": 2,
       "orderId": 2,
       "employeeId": 4
+    },
+    {
+      "orderId": 2,
+      "employeeId": 3,
+      "id": 3
     }
   ]
 }
