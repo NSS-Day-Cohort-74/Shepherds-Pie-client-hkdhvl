@@ -1,0 +1,53 @@
+.order-info-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.order-info {
+    padding: 2em 5em 2em 5em;
+    background-color: lightblue;
+    border-radius: 1em;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: lightblue;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-info-deliverydriver {
+    padding: 0.5em 0 1em 0;
+    align-content: center;
+}
+
+.order-info-customer {
+    padding-bottom: 1em;
+}
+
+.btn-container {
+    justify-content: space-around;
+}
+
+button {
+  align-items: center;
+  background-color: #0276FF;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  color: #fff;
+  cursor: pointer;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 1em 0 1em 0;
+  padding: 10px 21px; 
+}
+
+.button:active {
+  background-color: #006AE8;
+}
+
+.button:hover {
+  background-color: #1C84FF;
+}

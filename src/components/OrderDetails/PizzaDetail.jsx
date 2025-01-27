@@ -52,24 +52,19 @@ export const PizzaDetail = ({
 
     return (
         <article>
-            <div>Pizza #{pizzaData.id}</div>
             <div>
-                {pizzaData.size?.name}
-                {"  "}
+                <h4>{pizzaData.size?.name}:</h4>
                 {pizzaData.cheese?.name}
                 {"  "}
                 {pizzaData.sauce?.name}
                 <div>
-                    Pizza Toppings:
+                    Toppings:
                     {toppingData.map(
                         (toppingObject) => " " + toppingObject.topping?.name
                     )}
                 </div>
             </div>
-            <div>
-                Pizza Cost: ${pizzaData.size?.cost} + Toppings Cost: $
-                {pizzaData.pizzaToppings?.length * 0.5}
-            </div>
+            <div>Cost: ${localCost.toFixed(2)}</div>
             <div>
                 <button onClick={handleOpenModal}>remove pizza</button>
                 <ConfirmDelete

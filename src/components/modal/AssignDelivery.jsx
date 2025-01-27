@@ -71,28 +71,33 @@ export const AssignEmployee = ({
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay-delivery">
-            <div className="modal-content">
-                <select
-                    onChange={(event) =>
-                        setAssignedEmployeeId(parseInt(event.target.value))
-                    }
-                >
-                    <option>Choose a Driver</option>
-                    {employeeArray.map((employeeObject) => {
-                        return (
-                            <option
-                                key={`employee-key-${employeeObject.id}`}
-                                value={employeeObject.id}
-                            >
-                                {employeeObject.name}
-                            </option>
-                        );
-                    })}
-                </select>
-                <button onClick={handleAssignment}>Assign</button>
-                <button onClick={onClose}>Close</button>
-                {children}
+        <div className="modal">
+            <div className="modal-overlay-delivery">
+                <div className="modal-content">
+                    <select
+                        onChange={(event) =>
+                            setAssignedEmployeeId(parseInt(event.target.value))
+                        }
+                    >
+                        <option>Choose a Driver</option>
+                        {employeeArray.map((employeeObject) => {
+                            return (
+                                <option
+                                    key={`employee-key-${employeeObject.id}`}
+                                    value={employeeObject.id}
+                                >
+                                    {employeeObject.name}
+                                </option>
+                            );
+                        })}
+                    </select>
+                    {children}
+                    <div className="btn-container">
+                        <button onClick={handleAssignment}>Assign</button>
+
+                        <button onClick={onClose}>Close</button>
+                    </div>
+                </div>
             </div>
         </div>
     );
